@@ -6,6 +6,7 @@ const app = express();
 const morgan = require("morgan");
 app.use(morgan("tiny"));
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // Set up environmental variables
 require("dotenv/config");
@@ -13,6 +14,8 @@ const api = process.env.API_URL;
 
 // Middlewarse to parse the request body
 app.use(express.json());
+app.use(cors());
+app.options("*", cors());
 
 const Product = require("./models/product");
 //Routes
