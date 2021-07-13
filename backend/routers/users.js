@@ -81,7 +81,7 @@ router.post("/login", async (req, res) => {
   if (!user) {
     return res.status(400).send("The user not found");
   }
-
+  // if user exists and the password entered matches the hashed password
   if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
     const token = jwt.sign(
       {
